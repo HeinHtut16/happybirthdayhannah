@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      color: #ff80ab;
+      text-shadow: 0 0 15px #ff80ab;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      color: #ddd;
+      margin-bottom: 1rem;
+    }
+
+    #countdown {
+      font-size: clamp(1.2rem, 5vw, 2rem);
+      color: #ff80ab;
+      text-shadow: 0 0 10px #ff80ab;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      background: linear-gradient(90deg, #ff80ab, #ff4081);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ff4081;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 2rem;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px #ff80ab;
+    }
+
+    .stars {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://cdn.pixabay.com/photo/2016/12/28/17/34/stars-1930134_1280.png') repeat;
+      background-size: cover;
+      animation: twinkle 10s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes twinkle {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+
+    .cake {
+      display: none;
+      width: 300px;
+      height: 300px;
+      background-image: url('https://cdn.pixabay.com/photo/2017/06/09/12/16/birthday-2384604_1280.png');
+      background-size: cover;
+      animation: cakeAnimation 2s ease-in-out;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes cakeAnimation {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    #photo-gallery {
+      margin-top: 2rem;
+    }
+
+    #photo-gallery h2 {
+      color: #ff80ab;
+      text-shadow: 0 0 10px #ff80ab;
+      margin-bottom: 1rem;
+    }
+
+    .photos {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-bottom: 3rem;
+    }
+
+    .photos img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 3px solid #ff80ab;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #ff80ab;
+      transition: transform 0.3s ease;
+    }
+
+    .photos img:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 480px) {
+      button {
+        padding: 0.8rem 2rem;
+      }
+
+      .cake {
+        width: 200px;
+        height: 200px;
+      }
+
+      .photos img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <h1>🎉 Happy Hannah Day! 🎉</h1>
+  <p>"Since You don't accept any birthday present and you are not here. I really want to give you something valuable and I know you love flowers here is alittle suprise for my chik" kalay (Hannah)"</p>
+  <br><br><br><br><br><br>
+  <div id="countdown">Loading countdown...</div>
+  
+  <button onclick="window.location.href='index2.html'">Check for Surprise</button>
+  <div class="cake" id="cake"></div>
+
+  <div id="photo-gallery">
+    <h2>I promise you and I am trying my best to be together with you. Chik del <3 </h2>
+    <br>
+    <div class="photos">
+      <img src="img/0-02-06-23a0ce7ac08ec9f6b66a6f12528714230c644ed5b1c32a405c3358c8374d2bf0_146290ed80c63488.jpg" alt="Hannah 1" />
+      <img src="img/0-02-06-67c55abc183dd44dcb4fda22e1a5369bad8feecba0f0bf29b95ea75d147887e5_4a3515f89db1acdf.jpg" alt="Hannah 2" />
+      <img src="img/0-02-06-0cdbf4362841a782bd1cd2a8cb22ed9669761eeb38dcdb9fe1324fa34944e2b7_559e1f97ac731f7a.jpg" alt="Hannah 3" />
+      <!-- Add more photos by copying and changing the URLs -->
+    </div>
+  </div>
+
+  <script>
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const targetDate = new Date('May 19, ' + new Date().getFullYear() + ' 00:00:00').getTime();
+      let distance = targetDate - now;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "🎂 It's Today and Again Happy Birthday! Stay Happy always talk to me about anything 🎂";
+        document.getElementById("cake").style.display = "block";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s left to turn 17th`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
